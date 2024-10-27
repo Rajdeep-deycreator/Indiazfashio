@@ -1,0 +1,139 @@
+@media only screen and (max-width: 600px){
+  html,body {
+   font-size: 15pt;
+    background-image: url('/img/bkc.jpg');
+    background-size: 100vh 100vh;
+ }
+ #con{
+  width: 50vh;
+  height: 65vh;
+  position: fixed;
+  left:15%;
+  top: 10%;
+  background-color: #FEFEFF0A;
+  backdrop-filter: blur(30px);
+}
+ #user{
+  width:80%;
+  border-radius:50px;
+  margin:10px;
+}
+ #pass{
+  width: 80%;
+  border-radius: 50px;
+  margin: 10px;
+}
+ #sub{
+  width:80%;
+  margin:10px;
+  border-width: 0px;
+  border-radius:50px;
+  height: 30px;
+  font-size: 15px;
+  background-color: #0015FFCF;
+  color:#FFFFFF;
+  
+}
+ #tc{
+  position: relative;
+  left:25%;
+  top:0px;
+  margin:0px;
+}
+ #n{
+  width:80%;
+  border-radius:50px;
+  margin:10px;
+}
+ #ad{
+  
+  width:80%;
+  border-radius:50px;
+  margin:10px;
+
+}
+ #nnu{
+  
+  width:80%;
+  border-radius:50px;
+  margin:10px;
+
+}
+#l{
+  color:#FFFFFF;
+}
+}
+@media only screen and (min-width: 600px){
+  html,body {
+   font-size: 30px;
+    background-image: url('/img/bkc.jpg');
+    background-size: 100vh 100vh;
+ }
+ #con{
+  width: 50vh;
+  height: 65vh;
+  position: fixed;
+  left:15%;
+  top: 10%;
+  background-color: #FEFEFF0A;
+  backdrop-filter: blur(30px);
+  color: #FFFFFF;
+}
+#signu{
+  width:80%;
+  border-radius:50px;
+  margin:25px;
+  font-size: 30px;
+}
+ #user{
+  width: 80%;
+  border-radius: 50px;
+  margin: 10px;
+    margin:25px;
+    font-size: 30px;
+}
+ #sub{
+  width:80%;
+  margin:10px;
+  border-width: 0px;
+  border-radius:50px;
+  height: 30px;
+  font-size: 15px;
+  background-color: #0015FFCF;
+  color:#FFFFFF;
+    margin:25px;
+    font-size: 30px;
+  
+}
+ #tc{
+  position: relative;
+  left:25%;
+  top:0px;
+  margin:0px;
+  margin:25px;
+  font-size: 30px;
+}
+ #n{
+  width:80%;
+  border-radius:50px;
+  margin:10px;
+  margin:25px;
+  font-size: 30px;
+}
+ #ad{
+  
+  width:80%;
+  border-radius:50px;
+  margin:10px;
+  margin:25px;
+  font-size: 30px;
+}
+ #nnu{
+  
+  width:80%;
+  border-radius:50px;
+  margin:10px;
+  margin:25px;
+  font-size: 30px;
+}
+}
