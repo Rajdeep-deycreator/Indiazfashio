@@ -1,4 +1,27 @@
+html,body{
+  background:url("/img/Screenshot_20241201-002959-1.jpg");
+  background-size: 100vw 100vh;
+}
 #h{
-    background-color: #818CFFB5;
+   position: relative;
+    background-color: #0070A6;
     width: 100%;
+    height:50px;
+    color: lightgoldenrodyellow;
+    font-size: 20px;
+}
+#conp{
+  position:relative;
+  top:60px;
+  height:60vh;
+}
+#ordb{
+  background-color: #0076A6;
+  position: relative;
+  top: 66%;
+  height: 40px;
+  width: 80px;
+  font-size: 20px;
+  left: 60%;
+  color: lightgoldenrodyellow;
 }

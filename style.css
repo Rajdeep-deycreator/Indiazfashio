@@ -1,8 +1,8 @@
 @media only screen and (max-width: 600px){
   html,body {
     font-size: 15pt;
-    background-image: url('/img/bkc.jpg');
-    background-size: 100vh 100vh;
+    background-image: url('/Screenshot_20241111-211355-1.svg');
+  
 }
 #con{
   width: 50vh;
@@ -45,8 +45,10 @@
 @media only screen and (min-width: 600px){
   html,body {
     font-size: 15pt;
-    background-image: url('/img/bkc.jpg');
-    background-size: 100vh 100vh;
+    background-image: url('/Screenshot_20241111-211355-1.svg');
+    background-repeat:no-repeat;
+    background-size:cover;
+
 }
 #con{
   width: 50vh;
@@ -90,6 +92,5 @@
   top:0px;
   margin:0px;
   color:#FFFFFF;
-  background-color: #000000
  }
 }

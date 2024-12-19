@@ -13,116 +13,86 @@ firebase.initializeApp(firebaseConfig);
 const fs = firebase.firestore();
 const aut = firebase.auth();
 const stor = firebase.storage();
-let userId;
-let userName;
 
-// Redirect Function
-function redi() {
-  sessionStorage.setItem('userName', userName);
-  window.location.href = "home.html";
+// Redirect Function with userName as Parameter
+var id
+var ui
+function redi(userName) {
+  if (userName) {
+    console.log("Redirecting with userName:", userName);
+    sessionStorage.setItem('userName', id);
+    window.location.href = "home.html";
+  } else {
+    console.error("Redirect Error: userName is not set. Check data retrieval.");
+    alert("Failed to retrieve user name. Please try again.");
+  }
+}
+
+// Fetch User Data with Callback for Redirect
+function fetchUserData(uid, callback) {
+  fs.collection('users').doc(uid).get()
+    .then((doc) => {
+      if (doc.exists) {
+        const user = doc.data();
+        if (user && user.n) {
+          console.log('User Name successfully retrieved:', user.n);
+          callback(user.n); // Call the redirect with userName
+        } else {
+          console.error('User data incomplete or missing "n" field:', user);
+          alert('User data incomplete');
+          callback(null);
+        }
+      } else {
+        console.error('No document found for user');
+        alert('No document found for user');
+        callback(null);
+      }
+    })
+    .catch((error) => {
+      console.error('Firestore Error while fetching user data:', error.message);
+      callback(null);
+    });
 }
 
 // Login Function
 function sub() {
-  var email = document.getElementById('user').value;
-  var pass = document.getElementById('pass').value;
+  const email = document.getElementById('user').value;
+  const pass = document.getElementById('pass').value;
 
   aut.signInWithEmailAndPassword(email, pass)
     .then((creden) => {
       alert('Logged in');
-      userId = creden.user.uid;
-      console.log('User ID:', userId);
-      
-      fs.collection('users').doc(userId).get().then((doc) => {
-        if (doc.exists) {
-          const user = doc.data();
-          if (user && user.n) {
-            userName = user.n;
-            console.log('User Name:', user.n);
-            setTimeout(redi, 2000);
-          } else {
-            alert('No data');
-          }
-        } else {
-          alert('No document found');
-        }
-      }).catch((error) => {
-        alert('Firestore Error: ' + error.message);
-      });
+      const uid = creden.user.uid;
+      id=uid;
+      console.log('User ID after login:', uid);
+
+      // Fetch user data and redirect with callback
+      fetchUserData(uid, redi);
     })
     .catch((error) => {
       console.error('Authentication Error:', error.message);
     });
 }
-
-// New User Registration and File Upload Function
 function newuser() {
-  const data = {
-    n: document.getElementById('n').value,     // User's name
-    ph: document.getElementById('nnu').value,  // User's phone number
-    address: document.getElementById('ad').value // User's address
-  };
+  const email = document.getElementById("user").value;
+  const password = document.getElementById("pass").value;
 
-  aut.createUserWithEmailAndPassword(
-      document.getElementById('user').value,
-      document.getElementById('pass').value
-    )
-    .then((crede) => {
-      alert('User Registered');
-      userId = crede.user.uid;
-      
-      // Add user data to Firestore
-      fs.collection('users').doc(userId).set(data)
-        .then(() => {
-          console.log('User data added to Firestore');
-        })
-        .catch((error) => {
-          console.error('Error adding user data to Firestore:', error.message);
-        });
+  aut.createUserWithEmailAndPassword(email, password)
+    .then((cred) => {
+      const userId = cred.user.uid;
 
-      // File upload process
-      var filein = document.getElementById('file');
-      var file = filein.files[0]; // Ensure to get the file correctly
+      const userData = {
+        name: document.getElementById('n').value,
+        address: document.getElementById('ad').value,
+        phone: document.getElementById('nnu').value
+      };
 
-      if (!file) {
-        document.getElementById('con').innerHTML += 'No file chosen';
-        return;
-      }
-
-      var storageref = stor.ref('uploads/' + file.name);
-      var uptask = storageref.put(file);
-
-      uptask.on(
-        'state_changed',
-        (snapshot) => {
-          const totalBytes = snapshot.totalBytes || 1; // Avoid division by zero
-          const progress = (snapshot.bytesTransferred / totalBytes) * 100;
-          document.getElementById('con').textContent = 'Upload is ' + progress.toFixed(2) + '% done';
-        },
-        (error) => {
-          console.log('Upload Error:', error.message);
-        },
-        () => {
-          // Get download URL after upload completion
-          uptask.snapshot.ref.getDownloadURL().then((url) => {
-            console.log('File URL:', url);
-
-            // Update Firestore document with download URL
-            const da = { link: url };
-            fs.collection('users').doc(userId).set(da, { merge: true })
-              .then(() => {
-                console.log('Download link successfully added to Firestore:', url);
-              })
-              .catch((error) => {
-                console.log('Error adding link to Firestore:', error.message);
-              });
-          }).catch((error) => {
-            console.log('Error retrieving download URL:', error.message);
-          });
-        }
-      );
+      return fs.collection('users').doc(userId).set(userData);
+    })
+    .then(() => {
+      alert("User account successfully created!");
     })
     .catch((error) => {
-      console.error('User Registration Error:', error.message);
+      alert("Error: " + error.message);
     });
 }
