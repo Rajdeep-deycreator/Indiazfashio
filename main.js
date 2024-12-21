@@ -70,7 +70,7 @@ function sub() {
       fetchUserData(uid, redi);
     })
     .catch((error) => {
-      console.error('Authentication Error:', error.message);
+      alert('Authentication Error: check weather your password or email is correct', error.message);
     });
 }
 function newuser() {
