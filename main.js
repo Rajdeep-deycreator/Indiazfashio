@@ -30,7 +30,7 @@ function redi(userName) {
 
 // Fetch User Data with Callback for Redirect
 function fetchUserData(uid, callback) {
-  fs.collection('users').doc(uid).get()
+  fs.collection('users').doc(id).get()
     .then((doc) => {
       if (doc.exists) {
         const user = doc.data();
@@ -82,15 +82,16 @@ function newuser() {
       const userId = cred.user.uid;
 
       const userData = {
-        name: document.getElementById('n').value,
+        n: document.getElementById('n').value,
         address: document.getElementById('ad').value,
-        phone: document.getElementById('nnu').value
+        ph: document.getElementById('nnu').value
       };
 
       return fs.collection('users').doc(userId).set(userData);
     })
     .then(() => {
       alert("User account successfully created!");
+      window.location.href="index.html"
     })
     .catch((error) => {
       alert("Error: " + error.message);
