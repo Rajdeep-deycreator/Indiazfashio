@@ -24,6 +24,8 @@ fs.collection('pro').onSnapshot((snap) => {
     var conpr=document.createElement('div');
     var card=document.createElement('div');
     conpr.appendChild(card);
+    conpr.style.display='block'
+    conpr.style.backgroundColor='#000000'
     card.appendChild(bu);
      
 
@@ -32,15 +34,16 @@ fs.collection('pro').onSnapshot((snap) => {
      card.style.borderRadius = '3px';
      card.style.margin = '10%';
      card.style.borderColor = '#000000';
-     card.style.backgroundColor = "RGBA(225,225,0.5)";
+     card.style.backgroundColor = "#00000"/*RGBA(225,225,0.5)"*/;
      card.style.backdropfilter="blur(10px)";
      var tex = document.createElement('div');
-     tex.innerHTML += te+'<br> price:'+d.pr+'<br>ART No.'+doc.id;
+     tex.innerHTML += "Price:"+d.pr+'<br>'+te+'<br>AR T No.'+doc.id;
      tex.style.position = 'relative';
-     tex.style.top = '300px';
+     tex.style.top = '400px';
     
      tex.style.borderWidth='20px';
      tex.style.borderCollapse='#000000';
+     tex.style.color='#FFFFFF';
      card.appendChild(tex);
      var im=document.createElement('img');
      im.setAttribute('src',link)
