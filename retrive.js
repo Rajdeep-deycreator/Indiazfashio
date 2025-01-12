@@ -1,5 +1,7 @@
 
 var proi;
+var userid=sessionStorage.getItem('id')
+
 
 fs.collection('pro').onSnapshot((snap) => {
   if(snap.empty){
@@ -13,9 +15,13 @@ fs.collection('pro').onSnapshot((snap) => {
     bu.value="buy";
     bu.setAttribute('id','ordb')
     bu.onclick= function(){
+      if(userid===null){
+        window.location.href="/index.html";
+      }else{
       window.location.href="order.html"
       proi=doc.id;
       sessionStorage.setItem('id',proi)
+    }
     }
     if(d.link){
     var link=d.link;

@@ -15,8 +15,8 @@ const aut = firebase.auth();
 const stor = firebase.storage();
 
 // Redirect Function with userName as Parameter
-var id
 var ui
+var id
 function redi(userName) {
   if (userName) {
     console.log("Redirecting with userName:", userName);
@@ -64,6 +64,7 @@ function sub() {
       alert('Logged in');
       const uid = creden.user.uid;
       id=uid;
+      sessionStorage.setItem('id',uid)
       console.log('User ID after login:', uid);
 
       // Fetch user data and redirect with callback
