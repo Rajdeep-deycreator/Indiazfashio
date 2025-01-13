@@ -85,7 +85,8 @@ function newuser() {
       const userData = {
         n: document.getElementById('n').value,
         address: document.getElementById('ad').value,
-        ph: document.getElementById('nnu').value
+        ph: document.getElementById('nnu').value,
+        po:document.getElementById('postal').value
       };
 
       return fs.collection('users').doc(userId).set(userData);

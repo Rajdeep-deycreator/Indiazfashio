@@ -17,7 +17,7 @@ fs.collection('users').doc(user).get().then((doc)=>{
     addu=nn.address
     console.log(addu)
     var pr=document.getElementById('info-per')
-    pr.innerHTML += 'Name:'+nameu+'<br>phone Number:'+phu+'<br>Address:'+addu
+    pr.innerHTML += 'Name:'+nameu+'<br>phone Number:'+phu+'<br>Address:'+addu+'<br>Postal Code:'+nn.po;
   }
 })
 }
