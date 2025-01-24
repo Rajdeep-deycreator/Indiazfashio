@@ -1,5 +1,5 @@
 // Firebase Initialization
-const firebaseConfig = {
+/*const firebaseConfig = {
   apiKey: "AIzaSyDfa7BdS2Mvqqh1oufYt6MMVcHkGQt_vGY",
   authDomain: "indiazfashion.firebaseapp.com",
   projectId: "indiazfashion",
@@ -7,7 +7,7 @@ const firebaseConfig = {
   messagingSenderId: "830809729124",
   appId: "1:830809729124:web:2b46b64154d3a968e19771",
   measurementId: "G-MKVN46YLD9"
-};
+};*/
 
 firebase.initializeApp(firebaseConfig);
 const fs = firebase.firestore();
