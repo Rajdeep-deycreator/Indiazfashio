@@ -26,3 +26,9 @@ html,body{
   left: 60%;
   color: lightgoldenrodyellow;
 }
+#pro{
+  color: lightgoldenrodyellow;
+  background-color: #0076A6;
+  border-color: lightgoldenrodyellow;
+  border-radius: 50px;
+}
